@@ -1,4 +1,5 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import http from 'http';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
@@ -6,7 +7,7 @@ import compression from 'compression';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import router from './router';
-
+dotenv.config();
 
 const app = express();
 app.use(cors(
@@ -20,13 +21,12 @@ app.use(bodyParser.json());
 
 const server = http.createServer(app);
 
-const MONGO_URL = "mongodb+srv://igor:YGdGZViefUXN7yx8@cluster0.yjoms2j.mongodb.net/db_teste?retryWrites=true&w=majority"
 
 server.listen(3000, () => {
     console.log('Server started on port 3000');
 }
 );
-mongoose.connect(MONGO_URL);
+mongoose.connect(process.env.MONGO_URL || '');
 mongoose.connection.on('connected', () => {
     console.log('Connected to mongo instance');
 }
