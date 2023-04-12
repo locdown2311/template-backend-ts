@@ -1,0 +1,21 @@
+# Dependências
+node_modules/
+
+# Arquivos de compilação
+dist/
+*.js
+
+# Arquivos de configuração
+*.env
+
+# Logs
+*.log
+logs/
+
+# Arquivos gerados pelo VS Code
+.vscode/
+*.code-workspace
+
+# Outros arquivos gerados automaticamente
+yarn.lock
+package-lock.json
